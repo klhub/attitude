@@ -1,0 +1,357 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize letter
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008080
+\end_index
+\leftmargin 0.5cm
+\topmargin 0.5cm
+\rightmargin 0.5cm
+\bottommargin 0.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Notations and Conventions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Notation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comment
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Body angular rate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\boldsymbol{\omega}=\boldsymbol{\omega}_{B/I}^{B}=\boldsymbol{\omega}_{I\to B}^{B}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Angular rotation of the body frame with respect to the inertial frame expressed in the body frame.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Attitude quaternion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\boldsymbol{q}=\left[\begin{array}{c}
+\boldsymbol{q}_{vec}\\
+q_{sca}
+\end{array}\right]=\boldsymbol{q}_{B/I}=\boldsymbol{q}_{I\to B}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scalar-last right-handed unit quaternion representing attitude transformation from inertial to body frame.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Position vector
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\boldsymbol{p}_{V/I}^{I}=\boldsymbol{p}_{I\to V}^{I}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A position vector from the origin of the I frame to the Vehicle,
+ expressed in the I frame.
+ Similarly to a velocity vector.
+\end_layout
+
+\begin_layout Plain Layout
+Note that strictly speaking,
+ a frame has no origin.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Common Attitude Functions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left[\boldsymbol{a}\times\right] & \equiv\left[\begin{array}{ccc}
+0 & -a_{3} & a_{2}\\
+a_{3} & 0 & -a_{1}\\
+-a_{2} & a_{1} & 0
+\end{array}\right]\hspace{1em}\hspace{1em}3\times3\\
+\Xi & \equiv\left[\begin{array}{c}
+q_{sca}I_{3}+\left[\boldsymbol{q}_{vec}\times\right]\\
+-\boldsymbol{q}_{vec}^{T}
+\end{array}\right]\hspace{1em}\hspace{1em}4\times3\\
+\Psi & \equiv\left[\begin{array}{c}
+q_{sca}I_{3}-\left[\boldsymbol{q}_{vec}\times\right]\\
+-\boldsymbol{q}_{vec}^{T}
+\end{array}\right]\hspace{1em}\hspace{1em}4\times3\\
+\Omega & \equiv\left[\begin{array}{cc}
+-\left[\boldsymbol{\omega}\times\right] & \boldsymbol{\omega}\\
+-\boldsymbol{\omega}^{T} & 0
+\end{array}\right]\hspace{1em}\hspace{1em}4\times4\\
+\bar{\Omega} & \equiv\left[\begin{array}{cc}
+\cos\left(\frac{1}{2}\left\Vert \boldsymbol{\omega}\right\Vert \Delta t\right)-\left[\boldsymbol{\psi}\times\right] & \boldsymbol{\psi}\\
+-\boldsymbol{\psi}^{T} & \cos\left(\frac{1}{2}\left\Vert \boldsymbol{\omega}\right\Vert \Delta t\right)
+\end{array}\right]\hspace{1em}\hspace{1em}4\times4\\
+\boldsymbol{\psi} & \equiv\frac{\sin\left(\frac{1}{2}\left\Vert \boldsymbol{\omega}\right\Vert \Delta t\right)\boldsymbol{\omega}}{\left\Vert \boldsymbol{\omega}\right\Vert }\hspace{1em}\hspace{1em}3\times1\\
+\Gamma & \equiv\left[\begin{array}{cc}
+\left[\boldsymbol{n}\times\right] & \boldsymbol{n}\\
+-\boldsymbol{n}^{T} & 0
+\end{array}\right]\hspace{1em}\hspace{1em}4\times4
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Omega^{T}\left(\boldsymbol{b}\right)=-\Omega\left(\boldsymbol{b}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\Gamma^{T}\left(\boldsymbol{b}\right)=-\Gamma\left(\boldsymbol{b}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Omega$
+\end_inset
+
+ and 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ can be functions to other 
+\begin_inset Formula $3\times1$
+\end_inset
+
+ vectors.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Attitude Representation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{q} & =\left[\begin{array}{c}
+\boldsymbol{q}_{vec}\\
+q_{sca}
+\end{array}\right]\\
+ & =\left[\begin{array}{c}
+\hat{\boldsymbol{e}}\sin\left(\frac{{\vartheta}}{2}\right)\\
+\cos\left(\frac{{\vartheta}}{2}\right)
+\end{array}\right]\\
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

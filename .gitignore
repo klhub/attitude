@@ -1,0 +1,17 @@
+Thumbs.db
+*.lyx~
+*.lyx#
+*.asv
+*~$*
+*.lyx#
+*~
+*.un~
+*.tmp
+*.slxc
+*slprj/
+*pub/
+sims/*
+.orig
+html/*
+*.mat
+*.Identifier
