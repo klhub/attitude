@@ -92,6 +92,24 @@
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../img/ive_got_attitude.png
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is a mess notes of some useful equations for attitude and orbital mechanics simulation.
+ For detailed derivations,
+ assumptions,
+ please refer to the referenced materials.
+ 
+\end_layout
+
 \begin_layout Section
 Notations and Conventions
 \end_layout
@@ -278,7 +296,7 @@ q_{sca}I_{3}-\left[\boldsymbol{q}_{vec}\times\right]\\
 -\boldsymbol{\omega}^{T} & 0
 \end{array}\right]\hspace{1em}\hspace{1em}4\times4\\
 \bar{\Omega} & \equiv\left[\begin{array}{cc}
-\cos\left(\frac{1}{2}\left\Vert \boldsymbol{\omega}\right\Vert \Delta t\right)-\left[\boldsymbol{\psi}\times\right] & \boldsymbol{\psi}\\
+\cos\left(\frac{1}{2}\left\Vert \boldsymbol{\omega}\right\Vert \Delta t\right)I_{3}-\left[\boldsymbol{\psi}\times\right] & \boldsymbol{\psi}\\
 -\boldsymbol{\psi}^{T} & \cos\left(\frac{1}{2}\left\Vert \boldsymbol{\omega}\right\Vert \Delta t\right)
 \end{array}\right]\hspace{1em}\hspace{1em}4\times4\\
 \boldsymbol{\psi} & \equiv\frac{\sin\left(\frac{1}{2}\left\Vert \boldsymbol{\omega}\right\Vert \Delta t\right)\boldsymbol{\omega}}{\left\Vert \boldsymbol{\omega}\right\Vert }\hspace{1em}\hspace{1em}3\times1\\
@@ -332,7 +350,7 @@ Note that
 \end_layout
 
 \begin_layout Section
-Attitude Representation
+Attitude Parametrization
 \end_layout
 
 \begin_layout Standard
@@ -351,6 +369,497 @@ q_{sca}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A=\Xi^{T}\left(\boldsymbol{q}\right)\Psi\left(\boldsymbol{q}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Attitude Kinematics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{A}=-\left[\boldsymbol{\omega}\times\right]A
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+A_{k+1} & =\Phi_{k}A_{k}\\
+\Phi_{k} & =I_{3}-\left[\boldsymbol{\omega}\times\right]\frac{\sin\left(\left\Vert \boldsymbol{\omega}\right\Vert \Delta t\right)}{\left\Vert \boldsymbol{\omega}\right\Vert }+\left[\boldsymbol{\omega}\times\right]^{2}\frac{1-\cos\left(\left\Vert \boldsymbol{\omega}\right\Vert \Delta t\right)}{\left\Vert \boldsymbol{\omega}\right\Vert ^{2}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{\boldsymbol{q}}=\frac{1}{2}\Xi\left(\boldsymbol{q}\right)\boldsymbol{\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{q}_{k+1}=\bar{\Omega}\left(\boldsymbol{\omega}_{k},\Delta t\right)\boldsymbol{q}_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming 
+\begin_inset Formula $\left\Vert \boldsymbol{\omega}\right\Vert \Delta t$
+\end_inset
+
+ small or below Nyquist's interval limit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+A_{k+1} & =\left(I_{3}-\Delta t\left[\boldsymbol{\omega}\times\right]\right)A_{k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{q}_{k+1}=\left[I_{3}+\frac{\Delta t}{2}\Omega\left(\boldsymbol{\omega}\right)\right]\boldsymbol{q}_{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Attitude Dynamics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J\dot{\boldsymbol{\omega}}=\boldsymbol{\tau}-\left[\boldsymbol{\omega}\times\right]\left(J\boldsymbol{\omega}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $J$
+\end_inset
+
+ is the moment of inertia matrix,
+ often principal axes of inertia:
+ 
+\begin_inset Formula $J_{x},J_{y},J_{z}$
+\end_inset
+
+ .
+ For example,
+ TRMM's inertial matrix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J=\left[\begin{array}{ccc}
+\\\\\\\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Attitude Determination
+\end_layout
+
+\begin_layout Subsection*
+TRIAD
+\end_layout
+
+\begin_layout Standard
+Given 
+\begin_inset Formula $\boldsymbol{b}_{1}=A\boldsymbol{n}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{b}_{2}=A\boldsymbol{n}_{2}$
+\end_inset
+
+,
+ form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccccc}
+\boldsymbol{c}_{1}=\boldsymbol{n}_{1} & , & \boldsymbol{c}_{2}=\frac{\boldsymbol{n}_{1}\times\boldsymbol{n}_{2}}{\left\Vert \boldsymbol{n}_{1}\times\boldsymbol{n}_{2}\right\Vert } & , & \boldsymbol{c}_{3}=\boldsymbol{c}_{1}\times\boldsymbol{c}_{2}\\
+\boldsymbol{d}_{1}=\boldsymbol{b}_{1} & , & \boldsymbol{d}_{2}=\frac{\boldsymbol{b}_{1}\times\boldsymbol{b}_{2}}{\left\Vert \boldsymbol{b}_{1}\times\boldsymbol{b}_{2}\right\Vert } & , & \boldsymbol{d}_{3}=\boldsymbol{d}_{1}\times\boldsymbol{d}_{2}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Form 
+\begin_inset Formula $C$
+\end_inset
+
+ and 
+\begin_inset Formula $D$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C & =\left[\begin{array}{ccc}
+\boldsymbol{c}_{1} & \boldsymbol{c}_{2} & \boldsymbol{c}_{3}\end{array}\right]\\
+D & =\left[\begin{array}{ccc}
+\boldsymbol{d}_{1} & \boldsymbol{d}_{2} & \boldsymbol{d}_{3}\end{array}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Attitude matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ is calculated by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+D & =AC\\
+C & =DC^{T}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Davenport q-Method
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+K=-\sum_{i=1}^{N}w_{i}\Omega\left(\boldsymbol{b}_{i}\right)\Gamma\left(\boldsymbol{n}_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solve this eigenvalue/eigenvector problem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+K\boldsymbol{q}=\Lambda\boldsymbol{q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are 4 solutions,
+ solution is the eigenvector corresponding to the largest eigenvalue.
+ 
+\end_layout
+
+\begin_layout Subsection*
+QUEST Measurement Model
+\end_layout
+
+\begin_layout Standard
+The error covariance
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P=\left[-\sum_{i=1}^{N}\sigma_{i}^{2}\left[A\boldsymbol{n}_{i}\times\right]\right]^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Can replace with 
+\begin_inset Formula $\tilde{\boldsymbol{b}}_{i}=A\boldsymbol{n}_{i}$
+\end_inset
+
+,
+ good enough as approximation error is in the second-order.
+ 
+\end_layout
+
+\begin_layout Section
+Attitude Estimation
+\end_layout
+
+\begin_layout Subsection*
+Murrel's Form
+\end_layout
+
+\begin_layout Standard
+Gyro model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{cccccc}
+\boldsymbol{\omega} & =\tilde{\boldsymbol{\omega}}-\boldsymbol{\beta}-\boldsymbol{\eta}_{v} & , & E\left\{ \boldsymbol{\eta}_{v}\right\} =\boldsymbol{0} & , & E\left\{ \boldsymbol{\eta}_{v}\boldsymbol{\eta}_{v}^{T}\right\} =\sigma_{v}^{2}I_{3}\\
+\dot{\boldsymbol{\beta}} & =\boldsymbol{\eta}_{u} & , & E\left\{ \boldsymbol{\eta}_{u}\right\} =\boldsymbol{0} & , & E\left\{ \boldsymbol{\eta}_{u}\boldsymbol{\eta}_{u}^{T}\right\} =\sigma_{u}^{2}I_{3}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Example parameters 
+\begin_inset Formula $\sigma_{v}=\sqrt{10}\times10^{-10}\text{rad/sec}^{3/2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{u}=\sqrt{10}\times10^{-7}\text{rad/sec}^{1/2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Attitude observations for a single sensor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tilde{\boldsymbol{b}}_{i}=A\left(\boldsymbol{q}\right)\boldsymbol{n}_{i}+\boldsymbol{\nu}_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Delta\hat{\boldsymbol{x}}=\left[\begin{array}{c}
+\delta\boldsymbol{\alpha}\\
+\delta\hat{\boldsymbol{\beta}}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\delta\boldsymbol{q}_{vec}\approx\delta\boldsymbol{\alpha}/2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+State Update
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\hat{\boldsymbol{q}}_{k+1}^{+} & =\hat{\boldsymbol{q}}_{k+1}^{-}+\frac{1}{2}\Xi\left(\hat{\boldsymbol{q}}_{k+1}^{-}\right)\delta\boldsymbol{\alpha}_{k+1}^{+}\\
+\hat{\boldsymbol{\beta}}_{k+1}^{+} & =\hat{\boldsymbol{\beta}}_{k+1}^{-}+\delta\hat{\boldsymbol{\beta}}_{k+1}^{+}\\
+\hat{\boldsymbol{\omega}}_{k+1} & =\tilde{\boldsymbol{\omega}}_{k+1}-\hat{\boldsymbol{\beta}}_{k+1}^{+}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+State Propagation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\hat{\boldsymbol{q}}_{k+1}^{-} & =\bar{\Omega}\left(\hat{\boldsymbol{\omega}}_{k}^{+},\Delta t\right)\hat{\boldsymbol{q}}_{k}^{+}\\
+\hat{\boldsymbol{\beta}}_{k+1}^{-} & =\hat{\boldsymbol{\beta}}_{k}^{+}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Covariance propagation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+P_{k+1}^{-} & =\Phi_{k}P_{k}^{+}\Phi_{k}^{T}+\Gamma_{k}Q_{k}\Gamma_{k}^{T}\\
+\Gamma_{k} & =\left[\begin{array}{cc}
+-I_{3} & 0\\
+0 & I_{3}
+\end{array}\right]\\
+\Phi_{k} & =\left[\begin{array}{cc}
+\Phi_{11} & \Phi_{12}\\
+\Phi_{21} & \Phi_{22}
+\end{array}\right]\\
+\Phi_{11} & =I_{3}-\left[\hat{\boldsymbol{\omega}}\times\right]\frac{\sin\left(\left\Vert \hat{\boldsymbol{\omega}}\right\Vert \Delta t\right)}{\left\Vert \hat{\boldsymbol{\omega}}\right\Vert }+\left[\hat{\boldsymbol{\omega}}\times\right]^{2}\frac{I-\cos\left(\left\Vert \hat{\boldsymbol{\omega}}\right\Vert \Delta t\right)}{\left\Vert \hat{\boldsymbol{\omega}}\right\Vert ^{2}}\\
+\Phi_{12} & =\left[\hat{\boldsymbol{\omega}}\times\right]\frac{I-\cos\left(\left\Vert \hat{\boldsymbol{\omega}}\right\Vert \Delta t\right)}{\left\Vert \hat{\boldsymbol{\omega}}\right\Vert ^{2}}-I_{3}\Delta t-\left[\hat{\boldsymbol{\omega}}\times\right]^{2}\frac{\left\Vert \hat{\boldsymbol{\omega}}\right\Vert \Delta t-\sin\left(\left\Vert \hat{\boldsymbol{\omega}}\right\Vert \Delta t\right)}{\left\Vert \hat{\boldsymbol{\omega}}\right\Vert ^{3}}\\
+\Phi_{21} & =0_{3}\\
+\Phi_{22} & =I_{3}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../img/murrel.png
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+NASA Orion's
+\end_layout
+
+\begin_layout Section
+Orbital Mechanics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ddot{\boldsymbol{r}}^{I}=-\frac{\mu}{\left\Vert \boldsymbol{r}^{I}\right\Vert ^{2}}\boldsymbol{r}^{I}+\boldsymbol{a}_{SRP}^{I}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+State Estimation
+\end_layout
+
+\begin_layout Subsection*
+Error-State Kalman Filter
+\end_layout
+
+\begin_layout Subsection*
+Divided-Difference-2 Sigma-Point Kalman Filter
+\end_layout
+
+\begin_layout Subsection*
+Steady-State Kalman Filter
+\end_layout
+
+\begin_layout Subsection*
+Closed-Loop Linear Covariance Analysis
+\end_layout
+
+\begin_layout Part*
+References
+\end_layout
+
+\begin_layout Enumerate
+Crassidis,
+ John.
+ An Overview of Spacecraft Attitude Determination and Estimation.
+ NASA Engineering and Safety Center (NESC) Academy.
+ https://nescacademy.nasa.gov/video/bdeb764e048940a6b2ae05c3cfdf5d261d
+\end_layout
+
+\begin_layout Enumerate
+Markley,
+ Landis & Crassidis,
+ John.
+ (2014).
+ Fundamentals of Spacecraft Attitude Determination and Control.
+ 10.1007/978-1-4939-0802-8.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Crassidis,
+ John & Junkins,
+ John.
+ (2004).
+ Optimal Estimation of Dynamic Systems.
+ 10.1201/b11154.
+ 
 \end_layout
 
 \end_body
