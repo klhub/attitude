@@ -3,7 +3,7 @@
 # I've got Attitude!
 A collection of attitude functions for aerospace application.
 - /functions
-  - Small collections of attitude functions from Crassidis' books and classes.
+  - Small collections of attitude functions from Prof John Crassidis' books and classes.
   - 7 core "Lego-blocks" functions have the prefix of "fun_"
   - The benefit is that
 - Attitude conventions
@@ -17,6 +17,12 @@ A collection of attitude functions for aerospace application.
   - Quaternion
     - Scalar-Last.
     - Quaternion multiplication from right-to-left just like DCM. This is just the notation, the ideal is to be consistent with DCM and minimize potential implementation and usage error. Under the hood, at elemental multiplication level, it is still comform to right-handedness. 
+- main.m
+  - A simple demo of a spacecraft that rotates 360 degrees about the z axis in 90 minutes.
+  - Expected outputs in the plots especially the Euler123 angles. 
+  - By no means comprehensive! This is just a quick way to roughly verify the correctness of the attitude functions.
+- /doc/main_doc
+  - Mess documentation of useful equations. You'll need to install LyX to open the .lyx file, otherwise, exported PDF version also available.
     
 
 Future todo
@@ -27,4 +33,4 @@ Future todo
 - Magnetic field model (IGRF or WMM)
 - Feedback PID controller design with Laplace domain, root locus, Bode plot etc.
 
-Let me know if something you'd like me to add!
+Please let me know if something you'd like me to add! Also please let me know of any bugs and typos. 
