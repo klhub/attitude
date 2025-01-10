@@ -603,7 +603,7 @@ Solve this eigenvalue/eigenvector problem
 \begin_layout Standard
 \begin_inset Formula 
 \[
-K\boldsymbol{q}=\Lambda\boldsymbol{q}
+K\boldsymbol{q}=\lambda\boldsymbol{q}
 \]
 
 \end_inset
