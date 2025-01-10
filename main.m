@@ -3,9 +3,9 @@
 clc; clear all; close all;
 
 addpath('base_unit');
-addpath('functions');
-addpath('sensors');
-addpath('satellite_sim');
+addpath('functions/attitude');
+% addpath('models/sensors');
+% addpath('sim_satellite');
 
 sim_final   = 1.5 * C_HR ;
 dt          = 1   * C_SEC ;
