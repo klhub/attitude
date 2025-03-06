@@ -32,8 +32,9 @@ Future TODO
 - Actuator Models
 - Attitude estimator (EKF)
 - Magnetic field model (IGRF or WMM)
+  - https://www.ncei.noaa.gov/products/world-magnetic-model/wmm-coefficients
 - Feedback PID controller design with Laplace domain, root locus, Bode plot etc.
-- Include NAIF SPICE.
+~~- Include NAIF SPICE.~~
 - ECRV (Exponentially Correlated Random Variable) model for bias modelling.
 
 Please let me know if something you'd like me to add! Also please let me know of any bugs and typos. 
