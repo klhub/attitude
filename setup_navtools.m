@@ -5,8 +5,7 @@ addpath('functions');
 addpath('functions/attitude');
 addpath('spice/kernels');
 addpath('spice/mice/src/mice');
-addpath('spice/mice/src/cspice');
-addpath('spice/mice/src/cspice');
+% addpath('spice/mice/src/cspice');
 addpath('spice/mice/lib');
 
 % Load the necessary SPICE kernels
