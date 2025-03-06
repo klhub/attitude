@@ -1,6 +1,7 @@
 clear all; close all; clc;
 
 addpath('base_unit');
+addpath('functions');
 addpath('functions/attitude');
 addpath('spice/kernels');
 addpath('spice/mice/src/mice');
